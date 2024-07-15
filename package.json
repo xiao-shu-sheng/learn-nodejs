@@ -1,0 +1,23 @@
+{
+  "name": "learn-nodejs",
+  "version": "1.0.0",
+  "description": "nodejs学习",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiao-shu-sheng/learn-nodejs.git"
+  },
+  "keywords": [
+    "learn",
+    "nodejs"
+  ],
+  "author": "小书生",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xiao-shu-sheng/learn-nodejs/issues"
+  },
+  "homepage": "https://github.com/xiao-shu-sheng/learn-nodejs#readme"
+}
