@@ -4,7 +4,9 @@
   "description": "nodejs学习",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "predev": "node prev.js",
+    "dev": "node index.js",
+    "postdev": "node post.js"
   },
   "repository": {
     "type": "git",
