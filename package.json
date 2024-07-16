@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "nodejs学习",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "predev": "node prev.js",
     "dev": "node index.js",
@@ -21,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/xiao-shu-sheng/learn-nodejs/issues"
   },
-  "homepage": "https://github.com/xiao-shu-sheng/learn-nodejs#readme"
+  "homepage": "https://github.com/xiao-shu-sheng/learn-nodejs#readme",
+  "dependencies": {
+    "md5": "^2.3.0"
+  }
 }
