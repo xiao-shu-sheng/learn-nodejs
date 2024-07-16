@@ -17,3 +17,9 @@
 // 强行支持需要node 18高版本 会有警告 但是可以用
 // import pkg from './package.json' assert { type: 'json' }
 // console.log(pkg)
+
+
+
+// 02.js
+// import * as h from './02.js'
+// console.log(global.name, globalThis.name)
