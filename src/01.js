@@ -65,3 +65,10 @@
 // Cjs不可以tree shaking，esm可以tree shaking
 // commonjs中顶层的this指向模块本身， 而ES6中顶层的this指向undefined
 console.log(this)
+
+
+if(true) {
+    import('./test.js').then(res => { // 动态引入: 使用import函数模式
+        console.log(res)
+    })
+}
