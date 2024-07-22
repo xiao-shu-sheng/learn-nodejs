@@ -63,7 +63,7 @@
 // Cjs是基于运行时的同步加载 esm是基于运行时的异步加载
 // Cjs是可以修改值的，esm是不能修改值的（可读的）
 // Cjs不可以tree shaking，esm可以tree shaking
-// commonjs中顶层的this指向模块本身， 而ES6中顶层的this指向undefined
+// commonjs中顶层的this指向模块本身， 而ES6中顶层的this指向undefined, 浏览器中指向的是window
 console.log(this)
 
 

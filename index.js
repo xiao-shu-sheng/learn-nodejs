@@ -15,6 +15,7 @@
 
 
 // nodejs 自己实现了一个console api 与浏览器的console api 不一样 能够使打印的内容可以在终端上看到
-console.log('叫爸爸')
+console.log(process.env.NODE_ENV == 'dev' ? '叫爸爸' :  'call me father')
+
 
 

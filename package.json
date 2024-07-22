@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "predev": "node prev.js",
-    "dev": "node index.js",
-    "postdev": "node post.js"
+    "dev": "cross-env NODE_ENV=dev node index.js",
+    "postdev": "cross-env NODE_ENV=prod node post.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/xiao-shu-sheng/learn-nodejs#readme",
   "dependencies": {
+    "cross-env": "^7.0.3",
     "jsdom": "^24.1.0",
     "md5": "^2.3.0"
   }
