@@ -68,3 +68,17 @@
 
 给编写插件的人员或者编写npm包的开发人员使用的
 编写插件时需要的依赖插件
+
+#### 修改git网络设置
+git config --global http.proxy http://127.0.0.1:7890 
+git config --global https.proxy http://127.0.0.1:7890
+
+7890是代理的端口号
+
+#### 取消代理
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+
+#### 查看代理
+git config --global --get http.proxy
+git config --global --get https.proxy
