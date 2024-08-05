@@ -8,4 +8,14 @@
 #     "dirty": true
 # }
 
-GET http://localhost:8080/form?name="fuck"&call="shit"
+# GET http://localhost:8080/form?name="fuck"&call="shit"
+
+
+POST http://localhost:3000/send/mail HTTP/1.1
+Content-Type: application/json
+
+{
+    "to": "123@qq.com",
+    "subject": "标题",
+    "text": "我想你了，你还好吗？"
+}
