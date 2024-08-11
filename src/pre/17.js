@@ -57,6 +57,9 @@ const db = knex({
 app.get('/', async (req, res) => {
     // const  [data] = await sql.query('select * from user')
     const data = await db.select('*').from('user')
+    res.json({
+        sql: db.select('*').from('user').toSQL.sql() //调试的时候可以用
+    })
     res.send(data)
     
 })
