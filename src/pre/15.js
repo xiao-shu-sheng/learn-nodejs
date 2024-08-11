@@ -1,4 +1,4 @@
-import express from 'epxress'
+import express from 'express'
 
 const app = express()
 const whiteList = [] // 配置网址

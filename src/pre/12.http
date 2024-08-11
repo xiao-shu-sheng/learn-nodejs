@@ -22,10 +22,60 @@
 # GET http://localhost:3000/form/96
 
 
-POST http://localhost:3000/user/login HTTP/1.1
+# POST http://localhost:3000/user/login HTTP/1.1
+# Content-Type: application/json
+
+# {
+#     "name": "xigua",
+#     "pass": "123456"
+# }
+
+# GET http://localhost:3000/ HTTP/1.1
+
+# GET http://localhost:3000/user/9 HTTP/1.1
+
+
+ POST http://localhost:3000/add HTTP/1.1
 Content-Type: application/json
 
 {
-    "name": "xigua",
-    "pass": "123456"
+    "name": "桔子", 
+    "age": 18, 
+    "address": "东海蓬莱岛", 
+    "hobby": "搞钱", 
+    "gender": 0
 }
+
+# POST http://localhost:3000/add HTTP/1.1
+# Content-Type: application/json
+
+# {
+#     "name": "眼睛蛇", 
+#     "age": 3, 
+#     "address": "蛇坑", 
+#     "hobby": "老鼠", 
+#     "gender": 0
+# }#
+
+# POST http://localhost:3000/update HTTP/1.1
+# Content-Type: application/json
+
+# {
+#     "id": 9, 
+#     "hobby": "赚钱"
+# }
+
+# POST http://localhost:3000/update HTTP/1.1
+# Content-Type: application/json
+
+# {
+#     "id": 10, 
+#     "hobby": "闲适的生活"
+# }
+
+# DELETE http://localhost:3000/delete HTTP/1.1
+# Content-Type: application/json
+
+# {
+#     "id": 9
+# }
