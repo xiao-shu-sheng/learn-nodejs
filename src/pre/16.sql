@@ -1,3 +1,5 @@
+--  Active: 1723123294639@@127.0.0.1@3306
+
 # 创建数据库
 -- CREATE DATABASE IF NOT EXISTS `teacher`
 -- DROP DATABASE IF EXISTS `teacher`
@@ -8,7 +10,7 @@
 # 使用数据库
 -- USE `test`
 
--- DESC `student`
+-- DESC `user`
 
 -- DROP TABLE IF EXISTS `user`
 
@@ -47,10 +49,10 @@
 
 -- INSERT INTO `user` (name, age, address, hobby, gender)
 -- VALUES
---     ('曹植', 43, '茅草屋', '甄姬', 1),
---     ('曹操', 88, '魏王宫', '人妻', 1)
+--     ('桔子', 18, '东海蓬莱岛', '阿强', 0),
+--     ('阿强', 18, '大荒、成都载天', '桔子', 1)
 
--- SELECT * from `user`
+SELECT * from `user`
 
 -- SELECT `hobby` as `special-hobby` FROM `user` WHERE id = 1
 
@@ -67,3 +69,35 @@
 
 -- SELECT * from `user` WHERE hobby LIKE '%妻'
 # LIKE 模糊匹配 '%妻'以'妻'结尾的字符， '妻%'以'妻'开头的字符，'%妻%'含'妻'的字符匹配0个或者多个，'%_妻%'下划线代表模糊几个 ，
+
+
+# 更新
+-- UPDATE `user` SET hobby = '阿珍' WHERE name = '阿强'
+
+# 删除
+
+-- DELETE FROM `user` WHERE hobby = '阿强'
+
+-- # 批量删除
+-- DELETE FROM `user` WHERE id IN (6, 7, 8)
+
+-- SELECT CONCAT(`name`, '喜欢',`hobby`) as hobby FROM `user` WHERE age < 50
+
+-- SELECT LEFT(name, 1) FROM `user`
+
+-- SELECT AVG(`age`) from `user`
+
+-- SELECT COUNT(*) FROM `user`
+
+-- SELECT max(`age`) from `user`
+
+-- SELECT DATE_ADD(NOW(), INTERVAL 1 DAY) FROM `user` 
+
+-- SELECT DATE_ADD(`creat_time`, INTERVAL 1 DAY) FROM `user` 
+
+-- SELECT DATE_SUB(`creat_time`, INTERVAL 1 DAY) FROM `user` 
+
+-- SELECT  `id`, `name`, `hobby`, IF (gender = 1, '男', '女') as `gender` FROM `user`
+
+-- SELECT * FROM `user` WHERE `age` BETWEEN 16 AND 31
+
