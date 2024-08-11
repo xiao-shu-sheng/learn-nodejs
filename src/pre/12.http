@@ -32,19 +32,19 @@
 
 # GET http://localhost:3000/ HTTP/1.1
 
-# GET http://localhost:3000/user/9 HTTP/1.1
+# GET http://localhost:3000/user/14 HTTP/1.1
 
 
- POST http://localhost:3000/add HTTP/1.1
-Content-Type: application/json
+#  POST http://localhost:3000/add HTTP/1.1
+# Content-Type: application/json
 
-{
-    "name": "桔子", 
-    "age": 18, 
-    "address": "东海蓬莱岛", 
-    "hobby": "搞钱", 
-    "gender": 0
-}
+# {
+#     "name": "西施", 
+#     "age": 18, 
+#     "address": "浣溪沙", 
+#     "hobby": "商业间谍", 
+#     "gender": 0
+# }
 
 # POST http://localhost:3000/add HTTP/1.1
 # Content-Type: application/json
@@ -57,12 +57,23 @@ Content-Type: application/json
 #     "gender": 0
 # }#
 
+# POST http://localhost:3000/add HTTP/1.1
+# Content-Type: application/json
+
+# {
+#     "name": "米老鼠", 
+#     "age": 2, 
+#     "address": "大漂亮国", 
+#     "hobby": "猫", 
+#     "gender": 1
+# }
+
 # POST http://localhost:3000/update HTTP/1.1
 # Content-Type: application/json
 
 # {
-#     "id": 9, 
-#     "hobby": "赚钱"
+#     "id": 15, 
+#     "hobby": "搞死吴国"
 # }
 
 # POST http://localhost:3000/update HTTP/1.1
@@ -73,9 +84,9 @@ Content-Type: application/json
 #     "hobby": "闲适的生活"
 # }
 
-# DELETE http://localhost:3000/delete HTTP/1.1
-# Content-Type: application/json
+DELETE http://localhost:3000/delete HTTP/1.1
+Content-Type: application/json
 
-# {
-#     "id": 9
-# }
+{
+    "id": 16
+}
