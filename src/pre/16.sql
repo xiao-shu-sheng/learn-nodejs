@@ -52,7 +52,7 @@
 --     ('桔子', 18, '东海蓬莱岛', '阿强', 0),
 --     ('阿强', 18, '大荒、成都载天', '桔子', 1)
 
-SELECT * from `user`
+-- SELECT * from `user`
 
 -- SELECT `hobby` as `special-hobby` FROM `user` WHERE id = 1
 
