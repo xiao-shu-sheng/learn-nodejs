@@ -13,18 +13,25 @@
   myAnim.stop()
 */
 
-Function.prototype.method = function(name, fn) {
-  this.prototype[name] = fn
-  return this
-}
-const Anim = function() {}
 
-Anim.method('start', () => {
-  console.log('mother fuck')
-}).method('stop', () => {
-  console.log('fuck you')
-})
+/**
+  Function.prototype.method = function(name, fn) {
+    this.prototype[name] = fn
+    return this
+  }
+  const Anim = function() {}
 
-const myAnim = new Anim()
-myAnim.start()
-myAnim.stop()
+  Anim.method('start', () => {
+    console.log('mother fuck')
+  }).method('stop', () => {
+    console.log('fuck you')
+  })
+
+  const myAnim = new Anim()
+  myAnim.start()
+  myAnim.stop()
+*/
+
+// an anonymous function
+
+
