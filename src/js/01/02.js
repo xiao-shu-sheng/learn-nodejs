@@ -255,3 +255,220 @@ for (let item of obj) {
 obj.push('b', 20)
 
 console.log(obj) */
+/* 
+class Vehicle{}
+let FooMixin = (SuperClass) => class extends SuperClass {
+  foo() {
+    console.log('foo')
+  }
+}
+
+let BarMixin = (SuperClass) => class extends SuperClass {
+  bar() {
+    console.log('bar')
+  }
+}
+
+let BazMixin = (SuperClass) => class extends SuperClass {
+  baz() {
+    console.log('baz')
+  }
+}
+// 通过写一个辅助函数，可以把嵌套调用展开：
+function mix(BaseClass, ...mixins) {
+  return mixins.reduce((acc, mixin) => mixin(acc), BaseClass)
+}
+
+class Bus extends mix(Vehicle, FooMixin, BarMixin, BazMixin) {}
+
+let b = new Bus()
+b.foo()
+b.bar()
+b.baz() */
+
+/* const target = {
+  name: '小明同学',
+  age: 18,
+}
+const handler = {}
+
+const proxy1 = new Proxy(target, handler)
+
+console.log(proxy1)
+console.log(proxy1.name)
+
+const proxy2 = new Proxy(target, {
+  get(target, key, receiver) {
+    console.log('get')
+    return Reflect.get(target, key, receiver)
+  },
+  set(target, key, value, receiver) {
+    console.log('set')
+    return Reflect.set(target, key, value, receiver)
+  }
+})
+
+proxy2.name = '小红同学'
+console.log(proxy2)
+
+console.log(target.hasOwnProperty('name'))
+console.log(proxy1.hasOwnProperty('name'))
+console.log(proxy2.hasOwnProperty('name'))
+
+console.log(Proxy.prototype)//undefined
+
+// Proxy.prototype = {
+//   getPrototypeOf(target) {
+//     console.log('getPrototypeOf')
+//     return Reflect.getPrototypeOf(target)
+//   },
+//   setPrototypeOf(target, value) {
+//     console.log('setPrototypeOf')
+//     return Reflect.setPrototypeOf(target, value)
+//   }
+// }
+
+// console.log(Proxy.prototype)
+
+// Proxy.prototype是undefined,因此不能使用instanceof来判断
+console.log(Proxy.prototype instanceof Object)
+// Function has non-object prototype 'undefined' in instanceof check
+// console.log(target instanceof Proxy)  */
+
+/* 
+const target = {
+  name: '小明同学',
+  age: 18,
+}
+const handler = {
+  // 这个操作在JavaScript 代码中可以通过多种形式触发并被get()捕获
+  // proxy[property]、proxy.property 或Object.create(proxy)[property]
+  // 等操作都会触发基本的get()操作以获取属性
+  get() {
+    return '叫爸爸，不然爸爸就不爱你了'
+  }
+}
+
+
+const proxy = new Proxy(target, handler)
+console.log(target.name)
+console.log(proxy.name) // 叫爸爸，不然爸爸就不爱你了
+
+console.log(target['name'])
+console.log(proxy['name'])
+
+console.log(Object.create(target).name)
+console.log(Object.create(target)['name'])
+console.log(Object.create(proxy).name)
+console.log(Object.create(proxy)['name'])
+
+ */
+
+/* 
+const target = {
+  name: '小明同学', 
+  age: 18
+}
+
+const handler = {
+  get(trapTarget, key, receiver) {
+    console.log(trapTarget === target)
+    console.log(key)
+    console.log(receiver === proxy)
+    console.log(trapTarget === receiver)
+    return '叫爸爸，不然爸爸就不爱你了'
+  }
+}
+
+const proxy = new Proxy(target, handler)
+proxy.name
+
+ */
+/* 
+const target = {
+  name: '小明同学', 
+  age: 18
+}
+
+const handler = {
+  get(trapTarget, key, receiver) {
+    // aximum call stack size exceeded
+    // beacause the proxy object doesn't have a name property
+    console.log(receiver[key])
+    return trapTarget[key]
+  }
+}
+
+const proxy = new Proxy(target, handler)
+console.log(proxy.name)
+console.log(target.name)
+ */
+
+
+const target = {
+  name: '小明同学', 
+  age: 18
+}
+
+const handler = { 
+  get(trapTarget, key, receiver) {
+    return Reflect.get(trapTarget, key, receiver)
+  },
+  set(trapTarget, key, value, receiver) {
+    if(key === 'name' && value === '西瓜皮') {
+      value = value + '，叫爸爸'
+    }
+    return Reflect.set(trapTarget, key, value, receiver)
+  }
+}
+const proxy = new Proxy(target, handler)
+// target.name = '西瓜皮'
+
+proxy.name = '西瓜皮'
+console.log(proxy.name, target.name) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
