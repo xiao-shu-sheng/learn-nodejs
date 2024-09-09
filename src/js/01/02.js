@@ -427,6 +427,8 @@ const proxy = new Proxy(target, handler)
 proxy.name = '西瓜皮'
 console.log(proxy.name, target.name) 
 
+// 9.1.4  捕获器不变式 
+
 
 
 
