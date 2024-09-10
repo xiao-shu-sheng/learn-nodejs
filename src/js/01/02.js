@@ -445,15 +445,78 @@ console.log(proxy.name, target.name)
  */
 
 
+/* const target = {}
+Object.defineProperty(target, 'foo', {
+  configurable: false, // 不可配置
+  enumerable: false, // 不可枚举
+  writable: false, // 不可写
+  value: 'bar'
+})
 
+const handler = {
+  get() {
+    return 'xxx'
+  }
+}
 
+const proxy = new Proxy(target, handler)
+console.log(proxy.foo) // TypeError
+ */
 
+/* const target = {
+  foo: 'bar'
+}
+const handler = {
+  get() {
+    return '叫爸爸，不然爸爸就不爱你了'
+  }
+}
+// 撤销函数和代理对象在实例化的时候同时生成的
+const {proxy, revoke} = Proxy.revocable(target, handler)
 
+console.log(proxy.foo)
+console.log(target.foo)
+// 撤销代理的 操作是不可逆的。而且，撤销函数(revoke())是幂等的，调用多少次的结果都一样。
+// 撤销代理之后 再调用代理会抛出 TypeError
+revoke()
+console.log(proxy.foo) // TypeError
+ */
 
+/* 
+const o = {}
 
+try {
+  Object.defineProperty(o, 'foo', 'bar')
+  console.log('succcess')
+}catch(e) {
+  console.log('fail')
+}
+ */
 
+/* 
+const o = {}
 
+if(Reflect.defineProperty(o, 'foo', {value: 'bar'})) {
+  console.log('success')  
+} else {
+  console.log('fail')
+} */
 
+/*  
+// 以下反射方法都会提供状态标记
+Reflect.defineProperty() // 定义属性
+Reflect.deleteProperty() // 删除属性
+Reflect.preventExtensions() // 不可扩展
+Reflect.setPrototypeOf() // 设置原型
+// 用一等函数替代操作符
+Reflect.get() // 可以替代对象属性访问操作符
+Reflect.set() // 可以替代对=赋值操作符
+Reflect.has() // 可以替代in或者with()操作符
+Reflect.deleteProperty() // 可以替代delete操作符
+Reflect.construct() // 可以替代new操作符
+ */
+
+// 9.2.1 get()
 
 
 
