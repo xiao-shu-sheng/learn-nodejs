@@ -254,3 +254,19 @@ for (let item of obj) {
 obj.push('b', 20)
 
 console.log(obj) */
+
+/* class SuperArray extends Array {
+  // 使用 Symbol.species 作为静态属性，来决定.map()、.filter() 等方法在执行时返回的实例类型
+  static get [Symbol.species]() {
+    return Array
+  }
+}
+
+let arr = new SuperArray(1, 2, 3)
+console.log(arr)
+console.log(arr instanceof SuperArray)
+console.log(arr instanceof Array)
+let arr2 = arr.map(item => item + 1)
+console.log(arr2)
+console.log(arr2 instanceof SuperArray)
+console.log(arr2 instanceof Array) */
