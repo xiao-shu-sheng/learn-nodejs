@@ -558,28 +558,154 @@ console.log(proxy.name)
 console.log(myTarget.name)
  */
 
+/* 
+const myTarget = {
+  name: '小明同学', 
+  age: 18
+}
+
+const proxy = new Proxy(myTarget, {
+  getOwnPropertyDescriptor(target, key) {
+    console.log('getOwnPropertyDescriptor')
+    return Reflect.getOwnPropertyDescriptor(target, key)
+  }
+})
+
+console.log(Object.getOwnPropertyDescriptor(proxy, 'name'))
+ */
+
+/* 
+const myTarget= {
+  name: '小明同学', 
+  age: 18
+}
+
+const proxy = new Proxy(myTarget, {
+  deleteProperty(target, key) {
+    console.log('deleteProperty')
+    if(key === 'name') {
+      console.warn('%c不能删除name属性', 'color: red')
+      return true // 可以阻止 但不会删除
+    }
+    return Reflect.deleteProperty(target, key)
+  }
+})
+
+delete proxy.name
+console.log(proxy.name)
+ */
+/* 
+const myTarget = {
+  name: '小明同学', 
+  age: 18
+}
+const  hiddentProperties = ['age']
+
+const proxy = new Proxy(myTarget, {
+  get(target, key) {
+    if(hiddentProperties.includes(key)) {
+      console.warn('%c不能获取到' + key + '属性', 'color: red')
+      return '不能获取到' + key + '属性'
+    }
+    return Reflect.get(target, key)
+  },
+  set(target, key, value) {
+    if(key === 'name') {
+      console.warn('%c不能设置' + key + '属性', 'color: red')
+      return true
+    }
+    return Reflect.set(target, key, value)
+  },
+  ownKeys(target) {
+    console.log('ownKeys')
+    return Reflect.ownKeys(target)
+  },
+  getPrototypeOf(target) {
+    console.log('getPrototypeOf')
+    return Reflect.getPrototypeOf(target)
+  }
+})
+
+console.log(Object.keys(proxy))
+
+console.log(Object.getPrototypeOf(proxy))
+
+console.log(proxy.name)
+
+proxy.name = '小红同学'
+ */
+
+/* 
+function median(...args) {
+  return args.sort()[Math.floor(args.length / 2)]
+}
+
+const proxy = new Proxy(median, {
+  apply(target, thisArg, args) {
+    for(const arg of args) {
+      if(typeof arg !== 'number') {
+        throw new TypeError('median() only accepts numbers')
+      }
+    }
+    return Reflect.apply(...arguments)
+  }
+})
+
+// console.log(proxy(1, 2, 3, 4, "1", 6, 7, 8, 9, 10))
+console.log(proxy(4, 7, 1));
+ */
+
+/* 
+const userList = []
+
+class User {
+  constructor(name, age) {
+    this._name = name
+    this._age = age
+  }
+}
+
+const proxy = new Proxy(User, {
+  construct(target, args) {
+    const user = new target(...args)
+    userList.push(user)
+    return user
+  }
+})
+
+const user = new proxy('小明', 18)
+user._name = '小红'
+user._age = 19
+console.log(userList)
+
+ */
 
 
+// 将集合绑定到分派程序中，框架实现的一种解决方案
+/* 
+const userList = [];
+function emit(newValue) {
+  console.log(newValue);
+}
+const proxy = new Proxy(userList, {
+  set(target, property, value, receiver) {
+    const result = Reflect.set(...arguments);
+    if (result) {
+      emit(Reflect.get(target, property, receiver));
+    }
+    return result;
+  }
+});
 
+proxy.push(1)
+// push 方法会将一个元素添加到数组末尾，并返回数组的新长度。
+// push(1) 会触发 set 捕捉器两次:
+// 第一次：将 1 赋值给 userList[0]。
+// 第二次：更新 userList.length 属性（从 0 增加到 1）。
+// 对每个 set 操作，emit 函数都会被调用一次，因此第一次 push 打印了两次。
+proxy.push(2)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ */
 
 
 
