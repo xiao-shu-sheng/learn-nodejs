@@ -516,12 +516,47 @@ Reflect.deleteProperty() // 可以替代delete操作符
 Reflect.construct() // 可以替代new操作符
  */
 
-// 9.2.1 get()
+/* const target = {
+  name: '小明同学', 
+  age: 18
+}
 
+const proxy = new Proxy(target, {
+  has() {
+    console.log('has')
+    return Reflect.has(...arguments)
+  }
+})
 
+console.log('name' in proxy)
+ */
 
+/* 
+const myTarget = {
+  name: '小明同学', 
+  age: 18
+}
+// 创建一个用于存储代理对象自身属性的对象
+const proxyStorage = {}
 
-
+const proxy = new Proxy(myTarget, {
+  defineProperty(target, key, descriptor) {
+    console.log('defineProperty')
+    return Reflect.defineProperty(proxyStorage, key, descriptor)
+  },
+  get(target, key) {
+    // 如果代理对象自身有属性，则返回它，否则返回原始对象的属性
+    return proxyStorage.hasOwnProperty(key) ? proxyStorage[key] : target[key]
+  }
+})
+console.log(proxy.name)
+console.log(myTarget.name)
+Object.defineProperty(proxy, 'name', {
+  value: '小红同学'
+})
+console.log(proxy.name)
+console.log(myTarget.name)
+ */
 
 
 
