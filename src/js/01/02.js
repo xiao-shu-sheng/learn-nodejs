@@ -771,4 +771,71 @@ function inner() {
 outer() */
 
 
+// 使用new.target判断构造函数
+/* 
+function King(){
+  if(!new.target) {
+    throw new Error('Must use new')
+  }
+  console.log('new.target', new.target)
+}
 
+new King()
+King() */
+
+/* 
+function sayName(name) {
+  console.log(name)
+}
+function sayNames(n1, n2) { 
+  console.log(n1, n2)
+}
+
+function sayExtendedName(...name) {
+  console.log(name)
+}
+sayExtendedName(1,2,4)
+// length 属性保存函数定义的命名参数的个数，不包括剩余参数和未定义的参数。
+// prototype 是保存引用类型所有实例方法的地方
+// prototype 属性是不可枚举的，因此使用 for-in 循环不会返回这个属性
+console.log(sayName.length, sayNames.length, sayExtendedName.length) */
+
+
+/* 
+function sum(num1, num2) {
+  return num1 + num2
+}
+
+function callSum(num1, num2) {
+  return sum.apply(this, [num1, num2]) // 传入参数
+}
+function callSum2(num1, num2) {
+  return sum.call(this, num1, num2) // 传入参数
+}
+
+console.log(callSum(1, 2))
+console.log(callSum2(1, 2)) */
+/* 
+window.color = 'red' 
+let o = {
+  color: 'blue',
+  foo() {
+    console.log(this.color)
+  }
+}
+
+function sayColor() {
+  console.log(this.color)
+}
+sayColor.call(o)
+sayColor.apply(o)
+sayColor.bind(o)()
+sayColor.call(window)
+sayColor.apply(window)
+sayColor.bind(window)()
+sayColor.call(this)
+sayColor.apply(this)
+sayColor.bind(this)()
+ */
+
+// 10.12递归
