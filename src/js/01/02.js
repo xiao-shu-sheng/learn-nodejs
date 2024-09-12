@@ -706,11 +706,69 @@ proxy.push(1)
 proxy.push(2)
 
  */
+/* 
+const data = [
+  {name: '大黄', age: 18},
+  {name: '小黄', age: 19},
+  {name: '小花', age: 3}
+]
+
+function createComparisonFunction(propertyName) {
+  return function(obj1, obj2) {
+    const value1 = obj1[propertyName]
+    const value2 = obj2[propertyName]
+    if(value1 < value2) {
+      return -1
+    } else if(value1 > value2) {
+      return 1
+    } else {
+      return 0
+    }
+  }
+}
+// sort根据自定义比较函数进行排序
+// 如果返回值 小于 0，则第一个元素（obj1）排在第二个元素（obj2）之前。
+// 如果返回值 大于 0，则第一个元素排在第二个元素之后。
+// 如果返回值 等于 0，两个元素的顺序保持不变。
+data.sort(createComparisonFunction('age'))
+console.log(data)
+ */
 
 
 
+/* function factorial(n){
+  if(n === 1) {
+    return 1
+  }
+  return n * factorial(n - 1)
+} */
 
+/* 
+function factorial(n) {
+  if(n === 1) {
+    return 1
+  }
+  return n * arguments.callee(n - 1) // 严格模式下，arguments.callee 为 undefined
+}
 
+let a = factorial
+factorial = function() {
+  return 2
+}
+console.log(a(5))
+console.log(factorial(5))
+ */
+
+/* 
+function outer() {
+  inner()
+}
+
+function inner() {
+  console.log(inner.caller)
+}
+
+outer() */
 
 
 
