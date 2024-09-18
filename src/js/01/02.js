@@ -947,3 +947,115 @@ double(10)
 
 /* setTimeout(console.log, 100, ['1', 3, 'mother fuck'])
 setTimeout(console.log, 0, ['1', 3, '小明']) */
+
+/* let p = new Promise((resolve, reject) => {
+  console.log('initial promise reject')
+  reject('promise reject')
+})
+
+p.then(res => {
+  console.log(res, 'then resolve')
+}).catch(err => {
+  console.log(err, 'catch reject')
+}).finally(() => {
+  console.log('finally')
+}) */
+
+/* let p = Promise.all([
+  Promise.resolve(1),
+  Promise.reject(2),
+  Promise.resolve(3)
+])
+
+p.then(res => {
+  console.log(res, 'resolve')
+}).catch(err => {
+  console.log(err, 'err')
+}) */
+
+
+/* let p = Promise.all([
+  Promise.resolve(1),
+  Promise.resolve(2),
+  Promise.resolve(3)
+])
+
+p.then(res => {
+  console.log(res, 'resolve')
+}).catch(err => {
+  console.log(err, 'err')
+}) */
+
+/* let p = Promise.race([
+  Promise.resolve(1),
+  Promise.reject(2),
+  Promise.resolve(3)
+])
+
+p.then(res => {
+  console.log(res, 'resolve')
+}).catch(err => {
+  console.log(err, 'err')
+}) */
+
+
+/* Promise.allSettled([
+  Promise.resolve(1),
+  Promise.reject(2),
+  Promise.resolve(3)
+]).then(res => {
+  console.log(res, 'resolve')
+  const nextResolve = res.filter(result => result.status === 'fulfilled')
+  console.log(nextResolve, 'next resolve')
+}) */
+/* 
+class CancelToken {
+  constructor(cancelFn) {
+    this.promise = new Promise((resolve, reject) => {
+      cancelFn(() => {
+        setTimeout(console.log, 0, "delay cancelled");
+        resolve();
+      });
+    })
+  }
+}
+const startButton = document.querySelector('#start');
+const cancelButton = document.querySelector('#cancel');
+
+function cancellableDelayedResolve(delay) {
+  setTimeout(console.log, 0, 'set delay');
+  return new Promise((resolve, reject) => {
+    const id = setTimeout(() => {
+      setTimeout(console.log, 0, 'delayed resolve');
+      resolve();
+    }, delay);
+    const cancleToken = new CancelToken(cancelCallback => {
+      cancelButton.addEventListener('click', () => {
+        cancelCallback();
+      })
+    });
+    cancleToken.promise.then(() => {
+      clearTimeout(id);
+    })
+  })
+}
+
+startButton.addEventListener("click", () => cancellableDelayedResolve(1000)); */
+
+/* 
+class TrackablePromise extends Promise {
+  constructor(executor) {
+    const notifyHandlers = []
+    super((resolve, reject) => {
+      return executor(resolve, reject, (status) => {
+        notifyHandlers.map(handler => handler(status))
+      })
+    })
+    this.notifyHandlers = notifyHandlers
+  }
+
+  notify(notifyHandler) {
+    this.notifyHandlers.push(notifyHandler)
+    return this
+  }
+} */
