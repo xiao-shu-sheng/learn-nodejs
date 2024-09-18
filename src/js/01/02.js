@@ -837,5 +837,113 @@ sayColor.call(this)
 sayColor.apply(this)
 sayColor.bind(this)()
  */
+/* function Person(name) {
+  this.getName = function() {
+    return name
+  }
+  this.setName = function(name) {
+    name = name
+  }
+} */
 
-// 10.12递归
+/* 
+(function() {
+  let privateVariable = 10
+  function privateFunction() {
+    return false
+  }
+  Myobject = function(){} // 严格模式下会报错
+  Myobject.prototype.publicMethod = function() {
+    privateVariable++
+    privateFunction()
+    return privateVariable
+  }
+})() */
+/* 
+(function() {
+  let name =''
+  // use strict mode, Person is not defined
+  Person = function(value) {
+    name = value
+  }
+  Person.prototype.getName = function() {
+    return name
+  }
+  Person.prototype.setName = function(value) {
+    name = value
+  }
+})()
+
+let p = new Person('大黄')
+console.log(p.getName())
+p.setName('小黄')
+console.log(p.getName())
+ */
+
+/* 
+let singleton = function() {
+  // 私有变量和私有函数
+  let privateVariable = 10
+  function privateFunction() {
+    return false
+  }
+
+  // 特权/公有方法和属性
+  return {
+    publicMethod: function() {
+      privateVariable++
+      privateFunction()
+      return privateVariable
+    }
+  }
+}()
+
+console.log(singleton.publicMethod())
+console.log(singleton.privateVariable) // undefined
+ */
+/* 
+let application = function() {
+  let components = new Array()
+  components.push(new BaseComponent())
+
+  return {
+    getComponentCount() {
+      return components.length;
+    },
+    registerComponent(component) {
+      if(typeof component === 'object') {
+        component.push(component)
+      }
+    }
+  }
+}
+ */
+
+/* 
+function double(n) {
+  console.log(n)
+
+  setTimeout(() => {
+    console.log(n * 2)
+  }, 1)
+
+  setTimeout(() => {
+    console.log(n * 3)
+  }, 0)
+
+  setTimeout(() => {
+    console.log(n * 666)
+  })
+
+  queueMicrotask(() => {
+    console.log(n * 5555)
+  })
+
+  console.log(n * 4)
+}
+
+double(10)
+ */
+
+/* setTimeout(console.log, 100, ['1', 3, 'mother fuck'])
+setTimeout(console.log, 0, ['1', 3, '小明']) */
