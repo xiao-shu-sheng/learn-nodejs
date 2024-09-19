@@ -1041,21 +1041,38 @@ function cancellableDelayedResolve(delay) {
 }
 
 startButton.addEventListener("click", () => cancellableDelayedResolve(1000)); */
-
 /* 
 class TrackablePromise extends Promise {
-  constructor(executor) {
+  constructor(executor){
     const notifyHandlers = []
     super((resolve, reject) => {
       return executor(resolve, reject, (status) => {
+        console.log(status, 'notify status')
         notifyHandlers.map(handler => handler(status))
       })
     })
     this.notifyHandlers = notifyHandlers
   }
-
-  notify(notifyHandler) {
+  notify(notifyHandler){
     this.notifyHandlers.push(notifyHandler)
     return this
   }
-} */
+}
+
+let p = new TrackablePromise((resolve, reject, notify) => {
+  function countdown(x) {
+    if(x > 0) {
+      notify(`剩余${20 * x}% remaining`);
+      setTimeout(() => countdown(x - 1), 1000);
+    }else {
+      resolve('done');
+    }
+  }
+  countdown(5)
+})
+
+p.notify(status => console.log(status))
+p.then(res => {
+  console.log(res)
+})
+ */
